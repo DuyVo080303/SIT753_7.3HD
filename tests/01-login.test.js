@@ -1,57 +1,79 @@
-// tests/02-login.test.js
 const request = require('supertest');
-const { app, users, db } = require('../index');
+const express = require('express');
+const session = require('express-session');
 const bcrypt = require('bcrypt');
+const app = require('../index'); // Adjust if needed
+
+jest.mock('sqlite3', () => ({
+  verbose: () => ({
+    Database: jest.fn().mockImplementation(() => ({
+      all: jest.fn((query, params, cb) => {
+        if (query.includes('SELECT username, email, password FROM Users')) {
+          return cb(null, [{
+            username: 'hashedUser',
+            email: 'hashedEmail',
+            password: 'hashedPassword'
+          }]);
+        }
+        return cb(null, []);
+      }),
+      run: jest.fn((query, params, cb) => cb && cb()),
+      close: jest.fn(),
+    }))
+  })
+}));
+
+jest.mock('bcrypt', () => ({
+  genSalt: jest.fn().mockResolvedValue('salt'),
+  hash: jest.fn((value, salt) => Promise.resolve(`hashed_${value}`)),
+  compare: jest.fn((plain, hashed) => {
+    if (plain === 'password123' && hashed === 'hashedPassword') return Promise.resolve(true);
+    return Promise.resolve(false);
+  })
+}));
 
 describe('POST /login', () => {
-  beforeEach(() => {
-    users.length = 0;
-    jest.clearAllMocks();
+  it('should login successfully with valid credentials', async () => {
+    const res = await request(app)
+      .post('/login')
+      .send({ email: 'user@example.com', password: 'password123' });
+
+    expect(res.statusCode).toBe(200);
   });
 
-  it('should login successfully', async () => {
-    users.push({ username: 'testuser', password: 'hashedPassword', email: 'test@example.com' });
-    bcrypt.compare.mockImplementation((pass, hash, callback) => callback(null, true));
-
-    const response = await request(app)
+  it('should fail login with incorrect password', async () => {
+    const res = await request(app)
       .post('/login')
-      .send({ username: 'testuser', password: 'testpass' });
+      .send({ email: 'user@example.com', password: 'wrongpass' });
 
-    expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Login successful!');
-    expect(response.body.username).toBe('testuser');
+    expect(res.text).toContain('Invalid email or password');
+  });
+});
+
+describe('POST /create', () => {
+  it('should create account successfully with unique email and username', async () => {
+    const res = await request(app)
+      .post('/create')
+      .send({
+        user: 'newUser',
+        email: 'newuser@example.com',
+        password: 'password123'
+      });
+
+    expect(res.text).toContain('Create Account Successfully');
   });
 
-  it('should return 400 if user not found', async () => {
-    const response = await request(app)
-      .post('/login')
-      .send({ username: 'testuser', password: 'testpass' });
+  it('should show error if username or email already exists', async () => {
+    // mock bcrypt to match user/email as used
+    require('bcrypt').compare.mockImplementationOnce(() => Promise.resolve(true));
+    const res = await request(app)
+      .post('/create')
+      .send({
+        user: 'usedUser',
+        email: 'user@example.com',
+        password: 'password123'
+      });
 
-    expect(response.status).toBe(400);
-    expect(response.body.message).toBe('Invalid username or password.');
-  });
-
-  it('should return 400 if password incorrect', async () => {
-    users.push({ username: 'testuser', password: 'hashedPassword', email: 'test@example.com' });
-    bcrypt.compare.mockImplementation((pass, hash, callback) => callback(null, false));
-
-    const response = await request(app)
-      .post('/login')
-      .send({ username: 'testuser', password: 'wrongpass' });
-
-    expect(response.status).toBe(400);
-    expect(response.body.message).toBe('Invalid username or password.');
-  });
-
-  it('should return 500 if bcrypt error', async () => {
-    users.push({ username: 'testuser', password: 'hashedPassword', email: 'test@example.com' });
-    bcrypt.compare.mockImplementation((pass, hash, callback) => callback(new Error('Bcrypt error')));
-
-    const response = await request(app)
-      .post('/login')
-      .send({ username: 'testuser', password: 'testpass' });
-
-    expect(response.status).toBe(500);
-    expect(response.body.message).toBe('Error processing login.');
+    expect(res.text).toContain('Username has been used');
   });
 });
