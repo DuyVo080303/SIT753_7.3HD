@@ -4,6 +4,9 @@ pipeline {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
         
     }
+    tools {
+        nodejs 'NodeJS'
+    }
     stages {
         stage('Checkout') {
         steps {
