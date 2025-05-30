@@ -1,0 +1,72 @@
+<%- include('header'); -%>
+    <header>
+        <div class="container-fluid bg-primary-subtle">
+            <div class="col-sm-8 mx-auto text-center py-2">
+                <h1 class="display-4">dKin Caps</h1>
+                <p class="lead ">A young and inspiring organisation whose
+                    primary purpose is to bring you the highest quality headwear available.</p>
+            </div>
+        </div>
+    </header>
+    <main></main>
+    <div class="container">
+        <h3 class="mt-3"><%= title %></h3>
+        <P>
+            The table below lists all the registered members of <strong>dKin Caps</strong> community.
+            Accessing this data, stored in a persistant database, is peformed on the server.
+        </P>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Mobile#</th>
+                <th>Cap Type</th>
+                <th>Number of Caps</th>
+                <th>Comment</th>
+            </tr>
+            <% if (rows.length===0) { %>
+                <!-- If no members found, show the "List is empty" message -->
+                <tr>
+                    <td colspan="8" style="text-align:left; color: red;"><strong><%= message %></strong></td>
+                </tr>
+                <% } else { %>
+                    <!-- If members exist, display each member in a table row -->
+                    <% rows.forEach(row=> { %>
+                        <tr>
+                            <td>
+                                <%= row.id %>
+                            </td>
+                            <td>
+                                <%= row.fname %>
+                            </td>
+                            <td>
+                                <%= row.sname %>
+                            </td>
+                            <td>
+                                <%= row.email %>
+                            </td>
+                            <td>
+                                <%= row.mobile %>
+                            </td>
+                            <td>
+                                <%= row.favourite %>
+                            </td>
+                            <td>
+                                <%= row.numcaps %>
+                            </td>
+                            <td>
+                                <%= row.comment %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+        </table>
+
+        <a href="/">Click here to return to feedback form</a>
+
+    </div>
+    </main>
+    <%- include('footer'); -%>

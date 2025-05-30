@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style5-3.css">
+    <style>
+        /* Ensure the form is centered with appropriate margins */
+        #About {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Adjust the width of the form to be more compact */
+        #About .col-md-7 {
+            margin: auto;
+        }
+
+        #About h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark text-white sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <a class="navbar-brand text-white" aria-current="page" href="/home">
+                    <img src="Logo.png" height="30" width="30" alt="Figure Zone Logo">
+                </a>
+                <a>
+                    <span class="search" data-bs-toggle="collapse" href="#collapseEx" role="button" aria-expanded="false"
+                    aria-controls="collapseEx">Search
+                        <img src="icons8-magnifying-glass-50.png" alt="magnifying glass symbol" width="20" height="20">
+                    </span>
+                    <span>Cart
+                        <img src="New Arrivals/shopping bag.png" alt="shopping bag symbol" width="20" height="20">
+                    </span>
+                    <span>
+                        <a id="user" class="nav-link text-white" href="/login" role="button">
+                            Login
+                            <img src="New Arrivals/user.png" alt="user symbol" width="20" height="20">
+                        </a>
+                    </span>
+                    
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown d-flex">
+                            <a class="nav-link nav-link-product text-white" href="/product" role="button">
+                                Product
+                                <a class="nav-link nav-link-drop dropdown-toggle text-white" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/figure">Figure</a></li>
+                                    <li><a class="dropdown-item" href="/tcg">Trading Card Game</a></li>
+                                </ul>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/social">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/help">Help & Support</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="collapse" id="collapseEx">
+            <div class="fd">
+                <div class="find">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                    <input class="search-input" type="search" placeholder="Search">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" id="About">
+            <div class="col-md-7">
+                <h1 class="text-center">About Figure Zone</h1>
+                <p>Figure Zone is an Australian company that focuses on importing Japanese figures. When thinking of
+                    Japanese culture, comic books (manga) and anime likely come to mind, as they are essential elements
+                    of modern Japanese culture. Our goal is to deliver the distinctiveness and intricacy of the items
+                    you've encountered in stories or films. Additionally, we strive to bring your favorite characters
+                    closer to you.</p>
+                <h2>Our vission</h2>
+                <p>Figure Zone is the ideal destination for enthusiasts of Japanese figures. We are committed to
+                    offering the most dependable products, characterized not only by their exquisite design but also by
+                    their flawless quality upon arrival. With Figure Zone, you can expect Japanese-standard products
+                    and a strong foundation of trust.</p>
+                <h2>Our mission</h2>
+                <p>Figure's mission is to "Provide the most quality of Japanese goods to Australian customers." Our
+                    offerings include items from
+                    popular franchises like Pokemon, Yu-Gi-Oh!, One Piêc, Naruto, Jujutsu Kaisen, Mario,
+                    Digimon, Demon Slayer, and more. From collectible figures to the rarest TCG
+                    cards to complete your collection, we strive to deliver the finest Japanese products, guided by our
+                    five core values:</p>
+                <h5> 1. Authentic Goods: </h3>
+                    <p>Figure Zone is your go-to destination for authentic Japanese products. We are committed to
+                        providing
+                        high-quality, genuine items that you can trust.</p>
+                    <h5>2. Care & Support:</h3>
+                        <p>We are dedicated to ensuring that your purchasing experience is smooth and satisfying. We are
+                            always
+                            ready to discuss and address any questions you have, providing support throughout your
+                            buying
+                            journey.</p>
+                        <h5>3. Fast Delivery</h3>
+                            <p>At Figure Zone, you can simply choose the products you love and relax while they are on
+                                their way to
+                                you. We offer various delivery methods at reasonable prices to ensure your items arrive
+                                promptly</p>
+                            <img src="Best/DUy.jpg" alt="Figure Zone Picture" width="100%">
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-4">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white">Figure Zone</h5>
+                    <p>
+                        <a href="about.html" class="text-white" style="text-decoration: none;"> About Us</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white">Follow Us</h5>
+                    <div class="text-left text-md-left">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/DeakinUniversity/"
+                                    class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.deakin.edu.au/" class="btn-floating btn-sm text-white"
+                                    style="font-size: 23px;"><i class="fab fa-google-plus"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.youtube.com/user/deakinuniversity"
+                                    class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white">Products</h5>
+                    <p>
+                        <a href="figure.html" class="text-white" style="text-decoration: none;"> Figure</a>
+                    </p>
+                    <p>
+                        <a href="tcg.html" class="text-white" style="text-decoration: none;"> Trading Card Game</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white">Useful links</h5>
+                    <p>
+                        <a href="help.html" class="text-white" style="text-decoration: none;"> Help & Support</a>
+                    </p>
+                    <p>
+                        <a href="social.html" class="text-white" style="text-decoration: none;"> News</a>
+                    </p>
+                    <p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white">Contact</h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> 211 Burwood Highway, Burwood, VIC 3125, Australia
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> s224883218@deakin.edu.au
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> 03 9244 6333
+                    </p>
+                    <p>
+                        <i class="fas fa-business-time"></i> 9:00-17:00
+                    </p>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p> Copyright ©2024 <strong class="text-white">Figure Zone</strong> - #1 Bring To You The Best
+                        Japansese Goods.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>

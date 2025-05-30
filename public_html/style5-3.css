@@ -1,0 +1,204 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, Verdana, Georgia, "Times New Roman", sans-serif;
+}
+
+#navbarSupportedContent {
+    justify-content: right;
+}
+
+/*Class id : container lả thằng cha to nhất , chỉ cần max 2 thằng */
+.carousel-item {
+    border: 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item img {
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 800px;
+    height: 100%;
+}
+
+/*New Product Slider + Best Selling*/
+.product {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/*Product-Category h2 selector*/
+.product-category {
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*product-container selector*/
+.product-container {
+    padding: 0 10vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+/*product-container with scroll bar selector*/
+.product-container::-webkit-scrollbar {
+    display: none;
+}
+
+/*product-card selector*/
+.product-card {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    margin-right: 40px;
+    text-align: center;
+}
+
+/*product-image selector*/
+.product-image {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/*product-container selector*/
+.product-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*pre-btn and nxt-button selector for image arrow in slider*/
+.pre-btn,
+.nxt-btn {
+    border: none;
+    width: 10vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    cursor: pointer;
+    z-index: 8;
+}
+
+/*pre-btn and nxt-button selector for image arrow in slider*/
+.pre-btn {
+    left: 0;
+    transform: rotate(180deg);
+}
+
+/*pre-btn and nxt-button selector for image arrow in slider*/
+.nxt-btn {
+    right: 0;
+}
+
+/*pre-btn img and nxt-button img selector*/
+.pre-btn img,
+.nxt-btn img {
+    opacity: 0.2;
+}
+
+/*pre-btn img and nxt-button img selector*/
+.pre-btn:hover img,
+.nxt-btn:hover img {
+    opacity: 1;
+}
+
+/*search selector in navbar*/
+.search {
+    text-decoration: none;
+    color: white;
+}
+
+/*fd selector*/
+.fd {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*find selector*/
+.find {
+    --padding: 14px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: #f6f6f6;
+    width: 600px;
+}
+
+/*search input selector*/
+.search-input {
+    font-size: 25px;
+    color: #333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 300px;
+    flex: 1;
+}
+
+/*search input placehoder selector*/
+.search-input::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+}
+
+/*nav link product selector*/
+.nav-link-product {
+    padding-right: 1px !important;
+}
+
+/*nav link- drop selector*/
+.nav-link-drop {
+    padding-left: 0px !important;
+}
+
+/*nav item a selector*/
+.nav-item a:hover {
+    color: yellow !important;
+}
+
+.card-img-top {
+    height: 100%; /* Maintain full height */
+    object-fit: cover; /* Ensure the image covers the card while maintaining aspect ratio */
+    display: flex;
+}
+.card {
+    border: none;
+    background-color: transparent;
+    height: 400px;
+}
+
+#row1{
+    padding-top: 5%;
+}
+#row2{
+    padding-bottom: 5%;
+}
+.slidecard {
+    background: lightgray
+}
+
+#user{
+    padding-left: 0.3%;
+}
