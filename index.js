@@ -54,6 +54,14 @@ app.get('/login', (req, res) => {
     res.render('login', { message: null });
 });
 
+app.get('/', (req, res) => {
+    if (req.session.user) {
+        res.render('home', { loggedIn: true, username: req.session.user.username });
+    } else {
+        res.render('home', { loggedIn: false, username: null });
+    }
+});
+
 // Route for home page after login
 app.get('/home', (req, res) => {
     if (req.session.user) {
