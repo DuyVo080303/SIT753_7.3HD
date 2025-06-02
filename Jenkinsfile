@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
-        
+        DOCKER_TOKEN = credentials('DOCKER_TOKEN')
+        def version = "v${env.BUILD_NUMBER}"
     }
     tools {
         nodejs 'NodeJS'
@@ -15,12 +16,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-            sh 'npm install'
+                sh 'npm install'
             }
         }
         stage('Build') {
             steps {
-                sh 'docker build -t shopping-website:lastest-version .'
+                sh 'docker build -t shopping-website:lastest-${version} .'
             }
         }
         stage('Run Tests') {
@@ -67,8 +68,17 @@ pipeline {
                 }
             }
         }
-    
-    
-
+        stage('Release') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_TOKEN', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                        sh 'docker tag shopping-website:${version} $DOCKER_USER/shopping-website:${version}'
+                        sh 'docker push $DOCKER_USER/shopping-website:${version}'
+                        sh 'export BUILD_VERSION=${version} && docker-compose -f docker-compose.yml down && docker-compose -f docker-compose.yml up -d'
+                    }
+                }
+            }
+        }
     }
 }
