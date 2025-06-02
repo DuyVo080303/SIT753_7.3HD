@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t shopping-website:lastest-${version} .'
+                sh 'docker build -t shopping-website:${version} .'
             }
         }
         stage('Run Tests') {
