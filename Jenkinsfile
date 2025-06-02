@@ -44,6 +44,7 @@ pipeline {
                         -Dsonar.login=$SONAR_TOKEN
                 '''
             }
+        }
         
         stage('Security') {
             steps {
