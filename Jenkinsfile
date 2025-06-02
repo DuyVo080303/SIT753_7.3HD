@@ -29,7 +29,7 @@ pipeline {
             sh 'npm test || true' // Allows pipeline to continue despite test failures
             }
         }
-        stage('SonarCloud Code Quality Analysis') {
+        stage('Code Quality Analysis') {
             steps {
                 sh '''
                     # Download and extract SonarScanner CLI
